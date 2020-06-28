@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       headers:
       {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         "name": `${toy.name}`,
@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "likes": 0
       })
     })
+    .then(resp => resp.json())
+    .then(toyObject => renderToy(toyObject))
   }
 
   
@@ -104,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     postToy('http://localhost:3000/toys', newToy);
-    renderToy(newToy)
+    // renderToy(newToy)
     // const lastToyAdded = fetchToys()[-1]
     // renderToy(lastToyAdded);
     form.reset()
